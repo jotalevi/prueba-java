@@ -10,6 +10,7 @@ package prueba3java;
  */
 public class Prueba3Java {
     static String contrasenia = "MAxiCuLiAOO";
+    static String asdf = "asdf";
 
     /**
      * @param args the command line arguments
