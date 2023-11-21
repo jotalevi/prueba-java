@@ -9,6 +9,7 @@ package prueba3java;
  * @author neto
  */
 public class Prueba3Java {
+    static String contrasenia = "MAxiCuLiAOO";
 
     /**
      * @param args the command line arguments
