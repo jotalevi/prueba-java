@@ -10,12 +10,8 @@ package prueba3java;
  */
 public class Prueba3Java {
     static String contrasenia = "MAxiCuLiAOO";
-
     static String asdf = "asdf";
-
-    
     static String andres = "pasa la plata ";
-
 
     /**
      * @param args the command line arguments
