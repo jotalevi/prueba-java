@@ -1,14 +1,9 @@
 package prueba3java.dao.libro;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import prueba3java.clases.libro.Libro;
 
-/**
- *
- * @author cetecom
- */
 public interface ILibroDao {
     public boolean save(Libro libro);
 

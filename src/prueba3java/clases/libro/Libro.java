@@ -1,6 +1,5 @@
 package prueba3java.clases.libro;
 
-import prueba3java.clases.Venta;
 import java.util.*;
 
 public abstract class Libro {

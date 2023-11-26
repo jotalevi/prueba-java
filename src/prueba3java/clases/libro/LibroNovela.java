@@ -2,8 +2,6 @@ package prueba3java.clases.libro;
 
 import java.util.*;
 
-import prueba3java.clases.Venta;
-
 public final class LibroNovela extends Libro {
 
     private String autor;

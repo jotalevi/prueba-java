@@ -1,15 +1,9 @@
 package prueba3java.dao.venta;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import prueba3java.clases.Venta;
-import prueba3java.clases.libro.Libro;
 
-/**
- *
- * @author cetecom
- */
 public interface IVentaDao {
     public boolean save(Venta venta);
 
