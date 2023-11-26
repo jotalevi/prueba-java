@@ -6,19 +6,13 @@ import java.util.ArrayList;
 import prueba3java.clases.libro.Libro;
 import prueba3java.clases.libro.LibroNovela;
 import prueba3java.clases.libro.LibroTecnico;
+import prueba3java.conexion.Conexion;
 
 public class LibroDao implements ILibroDao {
     private Connection conexion = null;
 
     public LibroDao() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/test",
-                    "root", "");
-            System.out.println("Conexion exitosa");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+        this.conexion = Conexion.conectarBD("db");
     }
 
     @Override

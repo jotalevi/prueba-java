@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import prueba3java.clases.Venta;
+import prueba3java.conexion.Conexion;
 import prueba3java.dao.iformadepago.IFormaDePagoDao;
 import prueba3java.dao.libro.LibroDao;
 
@@ -11,14 +12,7 @@ public class VentaDao implements IVentaDao {
     private Connection conexion = null;
 
     public VentaDao() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/test",
-                    "root", "");
-            System.out.println("Conexion exitosa");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+        this.conexion = Conexion.conectarBD("db");
     }
 
     @Override

@@ -5,6 +5,7 @@ import prueba3java.clases.formaPago.PagoCheque;
 import prueba3java.clases.formaPago.PagoTarjeta;
 import prueba3java.clases.libro.Libro;
 import prueba3java.dao.libro.LibroDao;
+import prueba3java.dao.venta.VentaDao;
 import prueba3java.clases.Venta;
 
 public final class ControladorVentanaPrincipal {
@@ -64,5 +65,7 @@ public final class ControladorVentanaPrincipal {
     }
 
     public void realizarVenta() {
+        VentaDao vDao = new VentaDao();
+        vDao.save(this.venta);
     }
 }
