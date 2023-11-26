@@ -1,28 +1,33 @@
+CREATE DATABASE libreria;
+USE libreria;
+
 CREATE TABLE VENTA (
-    folio NUMBER PRIMARY KEY,
-    dia NUMBER NOT NULL,
-    mes NUMBER NOT NULL,
-    anio NUMBER NOT NULL,
-    total NUMBER NOT NULL
+    folio INT PRIMARY KEY,
+    dia INT NOT NULL,
+    mes INT NOT NULL,
+    anio INT NOT NULL,
+    total INT NOT NULL
 );
 
 CREATE TABLE LIBRO (
-    codigo VARCHAR PRIMARY KEY,
-    descripcion VARCHAR NOT NULL,
-    paginas NUMBER NOT NULL,
-    cantidad NUMBER NOT NULL,
-    precio NUMBER NOT NULL,
-    autorOTema VARCHAR NOT NULL,
-    isNovela BOOLEAN NOT NULL,
-    venta NUMBER FOREIGN KEY
+    codigo TEXT PRIMARY KEY,
+    descripcion TEXT NOT NULL,
+    paginas INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio INT NOT NULL,
+    autorOTema TEXT NOT NULL,
+    isNovela INT NOT NULL,
+    venta INT,
+    FOREIGN KEY (venta) REFERENCES VENTA(folio)
 );
 
 CREATE TABLE PAGO (
-    monto NUMBER NOT NULL,
-    numero NUMBER NOT NULL,
-    codigo VARCHAR NOT NULL,
-    isTarjeta BOOLEAN NOT NULL,
-    venta NUMBER FOREIGN KEY
+    monto INT NOT NULL,
+    numero INT NOT NULL,
+    codigo TEXT NOT NULL,
+    isTarjeta INT NOT NULL,
+    venta INT,
+    FOREIGN KEY (venta) REFERENCES VENTA(folio)
 );
 
 INSERT INTO VENTA (1, 27, 06, 2022, 15000);

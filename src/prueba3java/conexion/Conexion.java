@@ -17,9 +17,9 @@ import java.util.logging.Logger;
 public class Conexion {
     public static Connection conectarBD(String miBD) {
         String dbDriver = "com.mysql.jdbc.Driver";
-        String dbUri = "jdbc:mysql://localhost/" + miBD;
+        String dbUri = "" + miBD;
         String dbUser = "root";
-        String dbPass = "";
+        String dbPass = "F4XC14C0";
         Connection conn = null;
         try {
             try {

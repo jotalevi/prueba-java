@@ -8,8 +8,8 @@ import prueba3java.clases.libro.Libro;
 import prueba3java.clases.libro.LibroNovela;
 import prueba3java.clases.libro.LibroTecnico;
 import prueba3java.controller.ControladorVentanaPrincipal;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.table.*;
-import java.util.*;
 
 /**
  *
@@ -399,7 +399,13 @@ public class Interfaz extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         this.controladorVentanaPrincipal.cargarLibroFromCodigo(this.jTextField1.getText(),
                 jComboBox2.getSelectedIndex() != 0);
+
         Libro libro = this.controladorVentanaPrincipal.getLibro();
+
+        if (libro == null) {
+            showMessageDialog(null, "No se encontro ningun libro con el ID indicado.");
+            return;
+        }
 
         jTextField2.setText(libro.getDescripcion());
         if (libro.getClass() == (new LibroNovela()).getClass()) {
