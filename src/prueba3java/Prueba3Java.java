@@ -20,17 +20,16 @@ public class Prueba3Java {
      */
     public static void main(String[] args) {
         Conexion pruebaConexion = new Conexion();
+        Statement stmt;
+        ResultSet rs;
+        Conexion con= new Conexion();
+        Connection conn=con.conectarBD("libreria");
         
-        // Obtener la conexión
-        Connection conexion = pruebaConexion.getConexion();
-
-        // Verificar si la conexión fue exitosa
-        if (conexion != null) {
-            System.out.println("¡Conexión exitosa!");
+        
 
             // Realizar una consulta de prueba
             try {
-                Statement statement = conexion.createStatement();
+                Statement statement = conn.createStatement();
                 ResultSet resultSet = statement.executeQuery("SELECT * FROM libro;");
 
                 // Imprimir los resultados de la consulta
@@ -49,12 +48,10 @@ public class Prueba3Java {
             } catch (SQLException e) {
                 System.err.println("Error al ejecutar la consulta: " + e.getMessage());
             }
-        } else {
-            System.out.println("Error al conectar a la base de datos.");
         }
 
 
-        System.out.println("chupalo DJ");
+        
     }
 
-}
+

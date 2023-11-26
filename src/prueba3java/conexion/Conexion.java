@@ -15,35 +15,24 @@ import java.util.logging.Logger;
  * @author andre
  */
 public class Conexion {
-       Connection conexion = null;
-
-    public Conexion() {
+       public Connection conectarBD(String miBD) {
+        String dbDriver = "com.mysql.jdbc.Driver";
+        String dbUri = "jdbc:mysql://localhost/"+miBD;
+        String dbUser = "root";
+        String dbPass = "";
+        Connection conn=null;
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/libreria", "root", "");
-            System.out.println("Conexión exitosa");
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error al conectar a la base de datos: " + ex.getMessage());
-        }
-    }
-    
-    
-
-    public Connection getConexion() {
-        return conexion;
-    }
-
-    public void cerrarConexion() {
-        try {
-            if (conexion != null && !conexion.isClosed()) {
-                conexion.close();
-                System.out.println("Conexión cerrada");
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+//               Class.forName(dbDriver);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             }
+            conn = DriverManager.getConnection(dbUri,dbUser, dbPass);
         } catch (SQLException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Error al cerrar la conexión: " + ex.getMessage());
         }
+        return conn;
     }
         
 }
