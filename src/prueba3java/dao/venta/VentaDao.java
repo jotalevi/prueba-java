@@ -12,7 +12,7 @@ public class VentaDao implements IVentaDao {
     private Connection conexion = null;
 
     public VentaDao() {
-        this.conexion = Conexion.conectarBD("db");
+        this.conexion = Conexion.conectarBD("libreria");
     }
 
     @Override

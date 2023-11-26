@@ -9,9 +9,10 @@ import prueba3java.conexion.Conexion;
 
 public class IFormaDePagoDao implements IIFormaDePagoDao {
     private Connection conexion;
+    
 
     public IFormaDePagoDao() {
-        this.conexion = Conexion.conectarBD("db");
+        this.conexion = Conexion.conectarBD("libreria");
     }
 
     @Override

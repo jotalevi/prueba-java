@@ -12,7 +12,7 @@ public class LibroDao implements ILibroDao {
     private Connection conexion = null;
 
     public LibroDao() {
-        this.conexion = Conexion.conectarBD("db");
+        this.conexion = Conexion.conectarBD("libreria");
     }
 
     @Override
