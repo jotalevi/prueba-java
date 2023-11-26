@@ -10,7 +10,7 @@ CREATE TABLE VENTA (
 );
 
 CREATE TABLE LIBRO (
-    codigo TEXT PRIMARY KEY,
+    codigo TEXT(64) PRIMARY KEY,
     descripcion TEXT NOT NULL,
     paginas INT NOT NULL,
     cantidad INT NOT NULL,
