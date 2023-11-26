@@ -8,6 +8,7 @@ public abstract class Libro {
     private int paginas;
     private int cantidad;
     private int precio;
+    private int venta;
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
@@ -29,6 +30,10 @@ public abstract class Libro {
         this.precio = precio;
     }
 
+    public void setVenta(int venta) {
+        this.venta = venta;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -47,6 +52,10 @@ public abstract class Libro {
 
     public int getPrecio() {
         return precio;
+    }
+
+    public int getVenta() {
+        return venta;
     }
 
     public int calcularSubTotal(ArrayList<Libro> others) {

@@ -1,8 +1,18 @@
 package prueba3java.clases.formaPago;
 
-public class PagoCheque implements iFormaDePago {
+public final class PagoCheque implements IFormaDePago {
     private int monto;
     private int numero;
+    private int venta;
+
+    public PagoCheque() {
+    }
+
+    public PagoCheque(int monto, int numero, int venta) {
+        this.monto = monto;
+        this.numero = numero;
+        this.venta = venta;
+    }
 
     public void setMonto(int monto) {
         this.monto = monto;
@@ -12,12 +22,21 @@ public class PagoCheque implements iFormaDePago {
         this.numero = numero;
     }
 
+    public void setVenta(int venta) {
+        this.venta = venta;
+    }
+
     public int getMonto() {
         return this.monto;
     }
 
-    public int getCodigoAutorizacion() {
+    public int getNumero() {
         return this.numero;
+    }
+
+    @Override
+    public int getVenta() {
+        return venta;
     }
 
     @Override

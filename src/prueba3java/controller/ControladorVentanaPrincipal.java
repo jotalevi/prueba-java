@@ -1,6 +1,6 @@
 package prueba3java.controller;
 
-import prueba3java.clases.formaPago.iFormaDePago;
+import prueba3java.clases.formaPago.IFormaDePago;
 import prueba3java.clases.libro.Libro;
 import prueba3java.clases.Venta;
 
@@ -8,7 +8,7 @@ public final class ControladorVentanaPrincipal {
     private String codigoLibro;
     private Venta venta;
     private Libro libro;
-    private iFormaDePago formaDePago;
+    private IFormaDePago formaDePago;
 
     public void setCodigoLibro(String codigoLibro) {
         this.codigoLibro = codigoLibro;

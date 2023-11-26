@@ -6,6 +6,20 @@ public final class LibroTecnico extends Libro {
 
     private String tema;
 
+    public LibroTecnico() {
+    }
+
+    public LibroTecnico(String codigo, String descripcion, int paginas, int cantidad, int precio, int venta,
+            String tema) {
+        super.setCodigo(codigo);
+        super.setDescripcion(descripcion);
+        super.setPaginas(paginas);
+        super.setCantidad(cantidad);
+        super.setPrecio(precio);
+        super.setVenta(venta);
+        this.tema = tema;
+    }
+
     public void setTema(String tema) {
         this.tema = tema;
     }
@@ -28,4 +42,5 @@ public final class LibroTecnico extends Libro {
 
         return super.calcularSubTotal(others);
     }
+
 }

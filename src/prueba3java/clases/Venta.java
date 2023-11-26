@@ -1,6 +1,7 @@
 package prueba3java.clases;
 
 import prueba3java.clases.libro.Libro;
+import prueba3java.clases.formaPago.IFormaDePago;
 import java.util.*;
 
 public final class Venta {
@@ -10,6 +11,21 @@ public final class Venta {
     private int anio;
     private int total;
     private ArrayList<Libro> libros;
+    private IFormaDePago pago;
+
+    public Venta() {
+
+    }
+
+    public Venta(int folio, int dia, int mes, int anio, int total, ArrayList<Libro> libros, IFormaDePago formaDePago) {
+        this.folio = folio;
+        this.dia = dia;
+        this.mes = mes;
+        this.anio = anio;
+        this.total = total;
+        this.libros = libros;
+        this.pago = formaDePago;
+    }
 
     public void setAnio(int anio) {
         this.anio = anio;
@@ -35,6 +51,10 @@ public final class Venta {
         this.libros = libros;
     }
 
+    public void setPago(IFormaDePago pago) {
+        this.pago = pago;
+    }
+
     public int getAnio() {
         return this.anio;
     }
@@ -53,6 +73,10 @@ public final class Venta {
 
     public int getTotal() {
         return this.total;
+    }
+
+    public IFormaDePago getPago() {
+        return pago;
     }
 
     public ArrayList<Libro> getLibros() {
