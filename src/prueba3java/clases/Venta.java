@@ -72,6 +72,12 @@ public final class Venta {
     }
 
     public int getTotal() {
+        this.total = 0;
+
+        for (Libro libro : this.libros) {
+            this.total += libro.calcularSubTotal(libros);
+        }
+
         return this.total;
     }
 

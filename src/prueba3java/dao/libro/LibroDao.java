@@ -115,6 +115,34 @@ public class LibroDao implements ILibroDao {
     }
 
     @Override
+    public Libro getLibro(String codigo, boolean isNovela) {
+        Libro libro = null;
+        try {
+            String qry = "SELECT * FROM LIBRO WHERE codigo='" + codigo + "'";
+            Statement stm = conexion.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+            if (rs.next()) {
+                if (rs.getBoolean("isNovela") && isNovela) {
+                    LibroNovela l = new LibroNovela(rs.getString("codigo"), rs.getString("descripcion"),
+                            rs.getInt("paginas"), rs.getInt("cantidad"), rs.getInt("precio"), rs.getInt("venta"),
+                            rs.getString("autorOTema"));
+                    libro = l;
+                } else if (!isNovela) {
+                    LibroTecnico l = new LibroTecnico(rs.getString("codigo"), rs.getString("descripcion"),
+                            rs.getInt("paginas"), rs.getInt("cantidad"), rs.getInt("precio"), rs.getInt("venta"),
+                            rs.getString("autorOTema"));
+                    libro = l;
+                } else {
+                    throw new Exception("No Book Found");
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return libro;
+    }
+
+    @Override
     public ArrayList<Libro> getAllLibros() {
         ArrayList<Libro> libros = new ArrayList<>();
         try {

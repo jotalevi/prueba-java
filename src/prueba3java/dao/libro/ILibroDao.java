@@ -13,6 +13,8 @@ public interface ILibroDao {
 
     public Libro getLibro(String codigo);
 
+    public Libro getLibro(String codigo, boolean isNovela);
+
     public ArrayList<Libro> getAllLibros();
 
     public ArrayList<Libro> getLibrosByVenta(int folioVenta);

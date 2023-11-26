@@ -5,19 +5,13 @@ import java.sql.*;
 import prueba3java.clases.formaPago.IFormaDePago;
 import prueba3java.clases.formaPago.PagoCheque;
 import prueba3java.clases.formaPago.PagoTarjeta;
+import prueba3java.conexion.Conexion;
 
 public class IFormaDePagoDao implements IIFormaDePagoDao {
-    private Connection conexion = null;
+    private Connection conexion;
 
     public IFormaDePagoDao() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/test",
-                    "root", "");
-            System.out.println("Conexion exitosa");
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
+        this.conexion = Conexion.conectarBD("db");
     }
 
     @Override
