@@ -28,7 +28,7 @@ public class IFormaDePagoDao implements IIFormaDePagoDao {
                         p.getVenta() + ")";
             } else {
                 PagoTarjeta p = (PagoTarjeta) pago;
-                qry = "INSERT INTO PAGO (" +
+                qry = "INSERT INTO PAGO (monto, numero, codigo, isTarjeta, venta) VALUES (" +
                         p.getMonto() + ", " +
                         "0, " +
                         "'" + p.getCodigoAutorizacion() + "', " +

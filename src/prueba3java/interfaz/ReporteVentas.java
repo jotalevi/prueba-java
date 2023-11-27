@@ -4,6 +4,7 @@ import static java.lang.reflect.Array.set;
 import javax.swing.table.DefaultTableModel;
 
 import prueba3java.clases.Venta;
+import prueba3java.clases.formaPago.PagoCheque;
 import prueba3java.clases.libro.Libro;
 import prueba3java.controller.ControladorReporteVentas;
 import prueba3java.controller.ControladorVentanaPrincipal;
@@ -275,7 +276,10 @@ public class ReporteVentas extends javax.swing.JFrame {
         }
 
         for (Venta v : this.controladorReporteVentas.getVentas()) {
-            model.addRow(new String[] { v.getFolio() + "", v.getPago().getTipeStr(), v.getTotal() + "" });
+            String folio = v.getFolio() + "";
+            String pgStr = (v.getPago().getClass() == (new PagoCheque()).getClass()) ? "Cheque" : "Tarjeta";
+            String total = v.getTotal() + "";
+            model.addRow(new String[] { folio, pgStr, total });
         }
     }// GEN-LAST:event_jButton2ActionPerformed
 

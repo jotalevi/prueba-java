@@ -28,6 +28,7 @@ public final class ControladorVentanaPrincipal {
 
     public void setLibro(Libro libro) {
         this.libro = libro;
+
     }
 
     public void initVenta() {
@@ -39,6 +40,9 @@ public final class ControladorVentanaPrincipal {
     public void cargarLibroFromCodigo(String codigo, boolean isNovela) {
         LibroDao libroDao = new LibroDao();
         this.libro = libroDao.getLibro(codigo, isNovela);
+        if (this.libro != null) {
+            this.libro.setCantidad(0);
+        }
     }
 
     public void agregarLibroAVenta() {
