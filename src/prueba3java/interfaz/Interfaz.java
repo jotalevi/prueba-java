@@ -4,7 +4,6 @@
  */
 package prueba3java.interfaz;
 
-import java.nio.charset.Charset;
 import java.util.Random;
 import prueba3java.clases.libro.Libro;
 import prueba3java.clases.libro.LibroNovela;
@@ -140,7 +139,7 @@ public class Interfaz extends javax.swing.JFrame {
                                 new String[] {
                                                 "Código", "Descripción", "Precio", "Cantidad", "SubTotal"
                                 }) {
-                        Class[] types = new Class[] {
+                        Class<?>[] types = new Class[] {
                                         java.lang.String.class, java.lang.String.class, java.lang.Integer.class,
                                         java.lang.Integer.class,
                                         java.lang.Integer.class
@@ -149,7 +148,7 @@ public class Interfaz extends javax.swing.JFrame {
                                         false, false, false, false, false
                         };
 
-                        public Class getColumnClass(int columnIndex) {
+                        public Class<?> getColumnClass(int columnIndex) {
                                 return types[columnIndex];
                         }
 
