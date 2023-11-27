@@ -23,7 +23,7 @@ public class Conexion {
         String dbUser = "root";
         String dbPass = "F4XC14C0";
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(dbDriver);
             Conexion.conn = DriverManager.getConnection(dbUri, dbUser, dbPass);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
