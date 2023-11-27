@@ -34,7 +34,8 @@ public class LibroDao implements ILibroDao {
                         l.getVenta() + ")";
             } else {
                 LibroNovela l = (LibroNovela) libro;
-                qry = "INSERT INTO LIBRO ('" +
+                qry = "INSERT INTO LIBRO (codigo, descripcion, paginas, cantidad, precio, autorOTema, isNovela, venta) VALUES ('"
+                        +
                         l.getCodigo() + "', '" +
                         l.getDescripcion() + "', " +
                         l.getPaginas() + ", " +
