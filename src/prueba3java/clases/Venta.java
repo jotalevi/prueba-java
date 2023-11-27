@@ -14,7 +14,7 @@ public final class Venta {
     private IFormaDePago pago;
 
     public Venta() {
-
+        this.libros = new ArrayList<Libro>();
     }
 
     public Venta(int folio, int dia, int mes, int anio, int total, ArrayList<Libro> libros, IFormaDePago formaDePago) {
@@ -90,6 +90,13 @@ public final class Venta {
     }
 
     public void agregarLibro(Libro libro) {
+        for (Libro l : this.libros) {
+            if (l.getCodigo().equals(libro.getCodigo())) {
+                l.setCantidad(l.getCantidad() + libro.getCantidad());
+                return;
+            }
+        }
+
         this.libros.add(libro);
     }
 

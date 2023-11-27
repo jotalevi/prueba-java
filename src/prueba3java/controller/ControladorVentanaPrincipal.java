@@ -67,5 +67,6 @@ public final class ControladorVentanaPrincipal {
     public void realizarVenta() {
         VentaDao vDao = new VentaDao();
         vDao.save(this.venta);
+        this.initVenta();
     }
 }

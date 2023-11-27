@@ -30,13 +30,17 @@ public final class LibroTecnico extends Libro {
 
     public int calcularSubTotal(ArrayList<Libro> others) {
         int tecnicos = 0;
-        for (Libro item : others) {
-            if (item.getClass() == (new LibroTecnico()).getClass()) {
-                tecnicos++;
+        if (others != null) {
+            for (Libro item : others) {
+                if (item.getClass() == (new LibroTecnico()).getClass()) {
+                    tecnicos += item.getCantidad();
+                }
             }
         }
 
-        if (tecnicos > 3) {
+        if (tecnicos > 3)
+
+        {
             return (int) Math.round(super.calcularSubTotal(others) * 0.75);
         }
 

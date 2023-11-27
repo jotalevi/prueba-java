@@ -4,6 +4,7 @@
  */
 package prueba3java;
 
+import prueba3java.conexion.Conexion;
 import prueba3java.interfaz.Interfaz;
 
 /**
@@ -16,6 +17,7 @@ public class Prueba3Java {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Conexion.conectarBD("libreria");
         Interfaz.main(args);
     }
 }

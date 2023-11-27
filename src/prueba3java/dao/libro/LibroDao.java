@@ -12,7 +12,7 @@ public class LibroDao implements ILibroDao {
     private Connection conexion = null;
 
     public LibroDao() {
-        this.conexion = Conexion.conectarBD("libreria");
+        this.conexion = Conexion.getConnection("libreria");
     }
 
     @Override
@@ -112,25 +112,25 @@ public class LibroDao implements ILibroDao {
     public Libro getLibro(String codigo, boolean isNovela) {
         Libro libro = null;
         try {
-            String qry = "SELECT * FROM LIBRO WHERE codigo='" + codigo + "'";
+            String qry = "SELECT * FROM LIBRO WHERE codigo='" + codigo + "' AND isNovela=" + (isNovela ? 1 : 0);
             Statement stm = conexion.createStatement();
             ResultSet rs = stm.executeQuery(qry);
             if (rs.next()) {
-                if (rs.getBoolean("isNovela") && isNovela) {
-                    LibroNovela l = new LibroNovela(rs.getString("codigo"), rs.getString("descripcion"),
+                if (isNovela) {
+                    libro = new LibroNovela(rs.getString("codigo"), rs.getString("descripcion"),
                             rs.getInt("paginas"), rs.getInt("cantidad"), rs.getInt("precio"), rs.getInt("venta"),
                             rs.getString("autorOTema"));
-                    libro = l;
-                } else if (!isNovela) {
-                    LibroTecnico l = new LibroTecnico(rs.getString("codigo"), rs.getString("descripcion"),
-                            rs.getInt("paginas"), rs.getInt("cantidad"), rs.getInt("precio"), rs.getInt("venta"),
-                            rs.getString("autorOTema"));
-                    libro = l;
                 } else {
-                    throw new Exception("No Book Found");
+                    libro = new LibroTecnico(rs.getString("codigo"), rs.getString("descripcion"),
+                            rs.getInt("paginas"), rs.getInt("cantidad"), rs.getInt("precio"), rs.getInt("venta"),
+                            rs.getString("autorOTema"));
                 }
+            } else {
+                throw new Exception("No Book Found");
             }
-        } catch (Exception ex) {
+        } catch (
+
+        Exception ex) {
             System.out.println(ex.getMessage());
         }
         return libro;
