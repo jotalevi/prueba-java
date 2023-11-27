@@ -4,6 +4,7 @@ import prueba3java.clases.formaPago.IFormaDePago;
 import prueba3java.clases.formaPago.PagoCheque;
 import prueba3java.clases.formaPago.PagoTarjeta;
 import prueba3java.clases.libro.Libro;
+import prueba3java.dao.iformadepago.IFormaDePagoDao;
 import prueba3java.dao.libro.LibroDao;
 import prueba3java.dao.venta.VentaDao;
 import prueba3java.clases.Venta;
@@ -61,12 +62,27 @@ public final class ControladorVentanaPrincipal {
             pago = new PagoTarjeta(venta.getTotal(), numeroOAuth, this.venta.getFolio());
         }
 
+        this.formaDePago = pago;
         this.venta.setPago(pago);
     }
 
     public void realizarVenta() {
-        VentaDao vDao = new VentaDao();
-        vDao.save(this.venta);
+        VentaDao ventasDao = new VentaDao();
+        LibroDao librosDao = new LibroDao();
+        IFormaDePagoDao pagosDao = new IFormaDePagoDao();
+        int folio = this.venta.getFolio();
+
+        ventasDao.save(this.venta);
+
+        this.formaDePago.setVenta(folio);
+        pagosDao.save(this.formaDePago);
+
+        for (Libro l : this.venta.getLibros()) {
+            l.setCodigo(l.getCodigo() + "" + folio);
+            l.setVenta(folio);
+            librosDao.save(l);
+        }
+
         this.initVenta();
     }
 }

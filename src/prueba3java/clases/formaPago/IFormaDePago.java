@@ -10,4 +10,7 @@ public interface IFormaDePago {
 
     public int getVenta();
 
+    public void setVenta(int venta);
+
+    public String getTipeStr();
 }

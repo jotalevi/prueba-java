@@ -43,4 +43,9 @@ public final class PagoCheque implements IFormaDePago {
     public int calcularComision() {
         return (int) Math.round((monto / 100) * 5);
     }
+
+    @Override
+    public String getTipeStr() {
+        return "Cheque";
+    }
 }

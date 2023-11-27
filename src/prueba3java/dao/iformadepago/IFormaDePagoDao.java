@@ -20,7 +20,7 @@ public class IFormaDePagoDao implements IIFormaDePagoDao {
             String qry = "";
             if (pago.getClass() == (new PagoCheque()).getClass()) {
                 PagoCheque p = (PagoCheque) pago;
-                qry = "INSERT INTO PAGO (" +
+                qry = "INSERT INTO PAGO (monto, numero, codigo, isTarjeta, venta) VALUES (" +
                         p.getMonto() + ", " +
                         p.getNumero() + ", " +
                         "'', " +

@@ -44,4 +44,9 @@ public final class PagoTarjeta implements IFormaDePago {
         return (int) Math.round((monto / 100) * 3.5);
     }
 
+    @Override
+    public String getTipeStr() {
+        return "Tarjeta";
+    }
+
 }

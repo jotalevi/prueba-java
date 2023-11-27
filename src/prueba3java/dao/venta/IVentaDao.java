@@ -15,4 +15,6 @@ public interface IVentaDao {
 
     public ArrayList<Venta> getAllVentas();
 
+    public ArrayList<Venta> getByDate(int dia, int mes, int anio);
+
 }

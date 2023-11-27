@@ -18,7 +18,8 @@ public class VentaDao implements IVentaDao {
     @Override
     public boolean save(Venta venta) {
         try {
-            String qry = "INSERT INTO VENTA (" +
+
+            String qry = "INSERT INTO VENTA (folio, dia, mes, anio, total) VALUES (" +
                     venta.getFolio() + ", " +
                     venta.getDia() + ", " +
                     venta.getMes() + ", " +
@@ -84,6 +85,24 @@ public class VentaDao implements IVentaDao {
         ArrayList<Venta> ventas = new ArrayList<>();
         try {
             String qry = "SELECT * FROM VENTA";
+            Statement stm = conexion.createStatement();
+            ResultSet rs = stm.executeQuery(qry);
+            while (rs.next()) {
+                ventas.add(new Venta(rs.getInt("folio"), rs.getInt("dia"), rs.getInt("mes"), rs.getInt("anio"),
+                        rs.getInt("total"), (new LibroDao()).getLibrosByVenta(rs.getInt("folio")),
+                        (new IFormaDePagoDao()).getFormaDePago(rs.getInt("folio"))));
+            }
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return ventas;
+    }
+
+    @Override
+    public ArrayList<Venta> getByDate(int dia, int mes, int anio) {
+        ArrayList<Venta> ventas = new ArrayList<>();
+        try {
+            String qry = "SELECT * FROM VENTA WHERE dia=" + dia + " AND mes=" + mes + " AND anio=" + anio;
             Statement stm = conexion.createStatement();
             ResultSet rs = stm.executeQuery(qry);
             while (rs.next()) {
